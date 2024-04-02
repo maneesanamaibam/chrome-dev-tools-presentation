@@ -20,4 +20,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ~/react-dev-tools-demo-app/dist # The folder the action should deploy.
+          folder: ~/chrome-dev-tools-presentation/react-dev-tools-demo-app/dist # The folder the action should deploy.
