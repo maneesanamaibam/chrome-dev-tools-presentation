@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-
+declare global {
+  interface Window {
+    leakedObjects: any;
+  }
+}
 export default function DetachedDom() {
   const addNewItem = () => {
     if (!window.leakedObjects) {

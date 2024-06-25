@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
-import { useState, useEffect, useContext } from "react";
-import DetachedDom from "./DetachedDomExample";
+import { useState } from "react";
+// import DetachedDom from "./DetachedDomExample";
 // import {
 //   Route,
 //   Router,
