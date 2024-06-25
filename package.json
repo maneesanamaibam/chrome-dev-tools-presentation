@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "image-size": "^1.1.1",
+    "sharp": "^0.33.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7"
+  }
+}
