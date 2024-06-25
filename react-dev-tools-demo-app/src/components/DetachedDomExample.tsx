@@ -1,16 +1,26 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+declare global {
+  interface Window {
+    leakedObjects: HTMLDivElement[];
+  }
+}
 
 export default function DetachedDom() {
+  const [showText, setShowText] = useState<boolean | null>(null);
+  let timeOutId: NodeJS.Timeout | null = null;
   const addNewItem = () => {
+    timeOutId && clearTimeout(timeOutId);
+    setShowText(false);
     if (!window.leakedObjects) {
       window.leakedObjects = [];
     }
-    for (let i = 0; i < 1024; i++) {
-      window.leakedObjects.push(document.createElement("div"));
-    }
-    console.log(
-      "Detached DOMs are created. Please check Memory tab in devtools"
-    );
+    timeOutId = setTimeout(() => {
+      for (let i = 0; i < 1024; i++) {
+        window.leakedObjects.push(document.createElement("div"));
+      }
+      setShowText(true);
+    }, 2000);
   };
   return (
     <div className="container mx-auto p-4">
@@ -32,6 +42,21 @@ export default function DetachedDom() {
           Create detached DOMs
         </button>
       </div>
+      {showText === null && (
+        <p className="p-3 text-xl italic text-emerald-800">
+          No Detached DOMs created yet.
+        </p>
+      )}
+      {!showText && showText !== null && (
+        <p className="p-3 text-xl italic text-emerald-800">
+          Creating detached DOMs...
+        </p>
+      )}
+      {showText && (
+        <p className="p-3 text-xl italic text-indigo-800">
+          Detached DOMs are created. Please check Memory tab in devtools
+        </p>
+      )}
     </div>
   );
 }

@@ -1,15 +1,6 @@
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
-import { useState, useEffect, useContext } from "react";
-import DetachedDom from "./DetachedDomExample";
-// import {
-//   Route,
-//   Router,
-//   Routes,
-//   Switch,
-//   useLocation,
-//   useParams,
-// } from "react-router-dom";
+import { useState } from "react";
 
 export default function LazyLoadingExample() {
   const [randomNumber, setRandomNumber] = useState(43);
